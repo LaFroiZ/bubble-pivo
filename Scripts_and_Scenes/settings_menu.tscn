@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cq8ir1hjp47eg"]
+
+[ext_resource type="Script" uid="uid://bmx6dlnmr8pvk" path="res://Scripts_and_Scenes/settings_menu.gd" id="1_vtdsw"]
+[ext_resource type="Texture2D" uid="uid://rxsnndr2eetq" path="res://Assets/7db7e9213cb9f8ea0d0785d8eafa20a2.jpg" id="2_ba5oa"]
+
+[sub_resource type="FontVariation" id="FontVariation_x3cil"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_51c6i"]
+font = SubResource("FontVariation_x3cil")
+font_size = 80
+outline_size = 31
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" unique_id=860832142]
+offset_left = 278.0
+offset_top = 150.0
+offset_right = 563.0
+offset_bottom = 395.0
+script = ExtResource("1_vtdsw")
+
+[node name="Label" type="Label" parent="." unique_id=466739547]
+top_level = true
+layout_mode = 0
+offset_left = 139.0
+offset_top = 422.0
+offset_right = 529.25995
+offset_bottom = 704.9493
+text = "ИЛЬГИЗ"
+label_settings = SubResource("LabelSettings_51c6i")
+
+[node name="7Db7e9213Cb9f8Ea0d0785d8Eafa20a2" type="Sprite2D" parent="." unique_id=1250860364]
+position = Vector2(297.00006, 172.5)
+scale = Vector2(1.0685185, 0.5425)
+texture = ExtResource("2_ba5oa")
+
+[node name="back_to_menu" type="Button" parent="." unique_id=1813510253]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -286.0
+offset_top = -151.0
+offset_right = 877.0
+offset_bottom = 496.0
+
+[connection signal="pressed" from="back_to_menu" to="." method="_on_back_to_menu_pressed"]
