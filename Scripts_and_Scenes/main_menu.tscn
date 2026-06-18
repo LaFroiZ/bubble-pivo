@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dpfmhc0no0d62" path="res://Scripts_and_Scenes/main_menu.gd" id="1_fwnnw"]
 [ext_resource type="Script" uid="uid://lsspukjegt5b" path="res://Scripts_and_Scenes/settings.gd" id="2_mwehh"]
 [ext_resource type="Texture2D" uid="uid://bmu3j6lwqb6fy" path="res://Assets/Bubble_Pivo.png" id="3_jyks7"]
+[ext_resource type="Script" uid="uid://d120l8po5n653" path="res://Scripts_and_Scenes/button.gd" id="4_mwehh"]
+[ext_resource type="AudioStream" uid="uid://dsihhpdr4ehqf" path="res://Sounds/мясо (1).mp3" id="5_jyks7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mehiu"]
 line_spacing = 66.0
@@ -56,4 +58,18 @@ position = Vector2(579, 323)
 scale = Vector2(0.6941106, 0.6982758)
 texture = ExtResource("3_jyks7")
 
+[node name="Button" type="Button" parent="." unique_id=253746577]
+offset_left = 970.0
+offset_top = 435.0
+offset_right = 997.0
+offset_bottom = 466.0
+scale = Vector2(5.8606024, 5.763139)
+text = "67"
+script = ExtResource("4_mwehh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button" unique_id=563214351]
+stream = ExtResource("5_jyks7")
+autoplay = true
+
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
