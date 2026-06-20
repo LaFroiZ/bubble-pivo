@@ -24,61 +24,61 @@ offset_right = 378.62427
 offset_bottom = 379.0
 scale = Vector2(1.2854412, 0.94065183)
 
-[node name="MusicLabel" type="Label" parent="VBoxContainer" unique_id=1700917106]
+[node name="Label_Volume" type="Label" parent="VBoxContainer" unique_id=1700917106]
 layout_mode = 2
 text = "Громкость музыки"
 label_settings = SubResource("LabelSettings_51c6i")
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer" unique_id=658461435]
+[node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=658461435]
 layout_mode = 2
 max_value = 10.0
 value = 2.0
 tick_count = 11
 
-[node name="SfxLabel" type="Label" parent="VBoxContainer" unique_id=2087560073]
+[node name="Label_Volume2" type="Label" parent="VBoxContainer" unique_id=2087560073]
 layout_mode = 2
 text = "Громкость эффектов"
 label_settings = SubResource("LabelSettings_k814s")
 horizontal_alignment = 1
 
-[node name="SfxSlider2" type="HSlider" parent="VBoxContainer" unique_id=917310002]
+[node name="HSlider2" type="HSlider" parent="VBoxContainer" unique_id=917310002]
 layout_mode = 2
 max_value = 10.0
 value = 2.0
 tick_count = 11
 
-[node name="WindowModeLabel" type="Label" parent="VBoxContainer" unique_id=1970173679]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1970173679]
 layout_mode = 2
 text = "Режим окна:"
 horizontal_alignment = 1
 
-[node name="WindowModeOption" type="OptionButton" parent="VBoxContainer" unique_id=1170356012]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer" unique_id=1170356012]
 layout_mode = 2
 
-[node name="VsyncOption" type="CheckButton" parent="VBoxContainer" unique_id=270366238]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer" unique_id=270366238]
 layout_mode = 2
 text = "Vsync"
 alignment = 1
 text_overrun_behavior = 1
 
-[node name="FpsLabel" type="Label" parent="VBoxContainer" unique_id=1377833582]
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1377833582]
 layout_mode = 2
 text = "Ограничение FPS"
 horizontal_alignment = 1
 
-[node name="FpsOption" type="OptionButton" parent="VBoxContainer" unique_id=400673094]
+[node name="OptionButton2" type="OptionButton" parent="VBoxContainer" unique_id=400673094]
 layout_mode = 2
 
-[node name="ResolutionLabel" type="Label" parent="VBoxContainer" unique_id=840213820]
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=840213820]
 layout_mode = 2
 text = "Разрешение экрана"
 horizontal_alignment = 1
 
-[node name="ResolutionOption" type="OptionButton" parent="VBoxContainer" unique_id=1426151069]
+[node name="OptionButton3" type="OptionButton" parent="VBoxContainer" unique_id=1426151069]
 layout_mode = 2
 
-[node name="ResetOption" type="Button" parent="VBoxContainer" unique_id=1253735777]
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1253735777]
 layout_mode = 2
 text = "Сброс настроек"
 
