@@ -1,6 +1,6 @@
 extends Node2D
 
-# Ссылки на узлы (проверь имена в сцене!)
+# Ссылки на узлы 
 @onready var music_slider = $VBoxContainer/MusicSlider
 @onready var sfx_slider = $VBoxContainer/SfxSlider2
 @onready var window_mode_option = $VBoxContainer/WindowModeOption
