@@ -20,6 +20,14 @@ config/icon="res://assets/sprites/ui/icon.svg"
 MusicManager="*uid://dnhu3cb6s5fyp"
 GameManager="*uid://hni6may635px"
 
+[display]
+
+window/size/mode=4
+window/size/initial_position_type=3
+window/size/minimize_disabled=true
+window/size/maximize_disabled=true
+window/stretch/mode="canvas_items"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

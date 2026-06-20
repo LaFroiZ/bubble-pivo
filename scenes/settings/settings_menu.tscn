@@ -9,14 +9,19 @@ font = ExtResource("1_pp1gt")
 font_size = 31
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_x3cil"]
+font_size = 99
+outline_size = 44
+outline_color = Color(0, 0, 0, 1)
+
 [node name="settings_menu" type="Node2D" unique_id=49726800]
 script = ExtResource("1_k814s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=626236354]
-offset_left = 491.0
-offset_top = 229.0
-offset_right = 674.59454
-offset_bottom = 356.5711
+offset_left = 110.0
+offset_top = 246.0
+offset_right = 433.62427
+offset_bottom = 373.5711
 scale = Vector2(1.2854412, 0.94065183)
 
 [node name="Label_Volume" type="Label" parent="VBoxContainer" unique_id=1700917106]
@@ -44,9 +49,20 @@ text = "Back to menu"
 layer = -1
 
 [node name="settings_background" type="TextureRect" parent="CanvasLayer" unique_id=1120568997]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -95.0
+offset_top = -71.0
+offset_right = 1106.4373
+offset_bottom = 1268.2512
 scale = Vector2(1.063726, 0.53761387)
 texture = ExtResource("3_itqk5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=29065868]
+
+[node name="Ильгиз" type="Label" parent="." unique_id=514150947]
+offset_left = 107.0
+offset_top = 369.0
+offset_right = 524.0
+offset_bottom = 506.0
+text = "ИЛЬГИЗ"
+label_settings = SubResource("LabelSettings_x3cil")
+horizontal_alignment = 1
