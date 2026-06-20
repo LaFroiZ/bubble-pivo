@@ -13,7 +13,12 @@ config_version=5
 config/name="Bubble_Pivo"
 run/main_scene="uid://c2rtq6vejfnl2"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/ui/icon.svg"
+
+[autoload]
+
+MusicManager="*uid://dnhu3cb6s5fyp"
+GameManager="*uid://hni6may635px"
 
 [physics]
 

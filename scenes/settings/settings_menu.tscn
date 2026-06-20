@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cq8ir1hjp47eg"]
+
+[ext_resource type="Script" uid="uid://dxmk1umpuea78" path="res://scripts/settings_menu.gd" id="1_k814s"]
+[ext_resource type="FontFile" uid="uid://bfskj4lwd35sy" path="res://assets/fonts/Galmuri7 (Rus by rigbikkk).ttf" id="1_pp1gt"]
+[ext_resource type="Texture2D" uid="uid://depwwjcx3u4sb" path="res://assets/sprites/ui/settings_background.jpg" id="3_itqk5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_51c6i"]
+font = ExtResource("1_pp1gt")
+font_size = 31
+font_color = Color(1, 0, 0, 1)
+
+[node name="settings_menu" type="Node2D" unique_id=49726800]
+script = ExtResource("1_k814s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=626236354]
+offset_left = 491.0
+offset_top = 229.0
+offset_right = 674.59454
+offset_bottom = 356.5711
+scale = Vector2(1.2854412, 0.94065183)
+
+[node name="Label_Volume" type="Label" parent="VBoxContainer" unique_id=1700917106]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_51c6i")
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=658461435]
+layout_mode = 2
+max_value = 10.0
+value = 2.0
+tick_count = 11
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1970173679]
+layout_mode = 2
+text = "Ильгиз саси"
+horizontal_alignment = 1
+
+[node name="Button_Back" type="Button" parent="VBoxContainer" unique_id=794470983]
+layout_mode = 2
+text = "Back to menu"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1047832157]
+layer = -1
+
+[node name="settings_background" type="TextureRect" parent="CanvasLayer" unique_id=1120568997]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.063726, 0.53761387)
+texture = ExtResource("3_itqk5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=29065868]
