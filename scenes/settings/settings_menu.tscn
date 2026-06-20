@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cq8ir1hjp47eg"]
 
 [ext_resource type="Script" uid="uid://dxmk1umpuea78" path="res://scripts/settings_menu.gd" id="1_k814s"]
-[ext_resource type="FontFile" uid="uid://bfskj4lwd35sy" path="res://assets/fonts/Galmuri7 (Rus by rigbikkk).ttf" id="1_pp1gt"]
 [ext_resource type="Texture2D" uid="uid://depwwjcx3u4sb" path="res://assets/sprites/ui/settings_background.jpg" id="3_itqk5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_51c6i"]
-font = ExtResource("1_pp1gt")
-font_size = 31
-font_color = Color(1, 0, 0, 1)
+font_size = 21
+
+[sub_resource type="LabelSettings" id="LabelSettings_k814s"]
+font_size = 21
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3cil"]
 font_size = 99
@@ -18,15 +18,15 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_k814s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=626236354]
-offset_left = 110.0
-offset_top = 246.0
-offset_right = 433.62427
-offset_bottom = 373.5711
+offset_left = 47.999996
+offset_top = 132.0
+offset_right = 371.62427
+offset_bottom = 259.5711
 scale = Vector2(1.2854412, 0.94065183)
 
 [node name="Label_Volume" type="Label" parent="VBoxContainer" unique_id=1700917106]
 layout_mode = 2
-text = "Volume"
+text = "Громкость музыки"
 label_settings = SubResource("LabelSettings_51c6i")
 horizontal_alignment = 1
 
@@ -36,14 +36,31 @@ max_value = 10.0
 value = 2.0
 tick_count = 11
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1970173679]
+[node name="Label_Volume2" type="Label" parent="VBoxContainer" unique_id=2087560073]
 layout_mode = 2
-text = "Ильгиз саси"
+text = "Громкость эффектов"
+label_settings = SubResource("LabelSettings_k814s")
 horizontal_alignment = 1
 
-[node name="Button_Back" type="Button" parent="VBoxContainer" unique_id=794470983]
+[node name="HSlider2" type="HSlider" parent="VBoxContainer" unique_id=917310002]
 layout_mode = 2
-text = "Back to menu"
+max_value = 10.0
+value = 2.0
+tick_count = 11
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1970173679]
+layout_mode = 2
+text = "Режим окна:"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer" unique_id=1170356012]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer" unique_id=270366238]
+layout_mode = 2
+text = "Vsync"
+alignment = 1
+text_overrun_behavior = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1047832157]
 layer = -1
@@ -56,13 +73,27 @@ offset_bottom = 1268.2512
 scale = Vector2(1.063726, 0.53761387)
 texture = ExtResource("3_itqk5")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=29065868]
-
-[node name="Ильгиз" type="Label" parent="." unique_id=514150947]
-offset_left = 107.0
-offset_top = 369.0
-offset_right = 524.0
-offset_bottom = 506.0
+[node name="Ильгиз" type="Label" parent="CanvasLayer" unique_id=514150947]
+offset_left = 57.0
+offset_top = 393.0
+offset_right = 474.0
+offset_bottom = 530.0
 text = "ИЛЬГИЗ"
 label_settings = SubResource("LabelSettings_x3cil")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=29065868]
+
+[node name="Button_Back" type="Button" parent="." unique_id=794470983]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 502.0
+offset_top = 456.0
+offset_right = 902.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"

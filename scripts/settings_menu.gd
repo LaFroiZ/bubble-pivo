@@ -1,41 +1,82 @@
 extends Node2D
 
-# ═══════════════════════════════════════════════
-# SettingsMenu — скрипт меню настроек
-# Управляет громкостью музыки и возвратом в меню
-# ═══════════════════════════════════════════════
+# Ссылки на узлы
+@onready var music_slider = $VBoxContainer/HSlider
+@onready var sfx_slider = $VBoxContainer/HSlider2
+@onready var back_button = $Button_Back
+@onready var window_mode_option = $VBoxContainer/OptionButton  
+@onready var vsync_check = $VBoxContainer/CheckButton
 
-# Ссылки на узлы (назначаются через @onready)
-@onready var volume_slider = $VBoxContainer/HSlider
-@onready var back_button = $VBoxContainer/Button_Back
-
-# ─────────────────────────────────────────────
-# Вызывается при загрузке сцены
-# ─────────────────────────────────────────────
 func _ready():
-	# Устанавливаем значение ползунка из глобального менеджера музыки
-	# MusicManager хранит громкость от 0.0 до 1.0, а у нас шкала от 0 до 10
-	var saved_volume = MusicManager.get_volume()
-	volume_slider.value = saved_volume * 10  # Переводим 0.5 → 5
+	# ползунок музыки
+	var saved_music = MusicManager.get_volume()
+	music_slider.value = saved_music * 10
+	music_slider.value_changed.connect(_on_music_volume_changed)
+	# ползунок эффектов / не готов еще
+	sfx_slider.value = 5
+	sfx_slider.value_changed.connect(_on_sfx_volume_changed)
 	
-	# Подключаем сигналы
-	volume_slider.value_changed.connect(_on_volume_changed)
+	
+# выбор режима окна
+	window_mode_option.add_item("Оконный")
+	window_mode_option.add_item("Полноэкранный")
+	
+	var current_mode = DisplayServer.window_get_mode()
+	if current_mode == DisplayServer.WINDOW_MODE_WINDOWED:
+		window_mode_option.selected = 0
+	elif current_mode == DisplayServer.WINDOW_MODE_FULLSCREEN or current_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+		window_mode_option.selected = 1
+	
+	window_mode_option.item_selected.connect(_on_window_mode_selected)
+	
+	# VSync
+	var vsync_enabled = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
+	vsync_check.button_pressed = vsync_enabled
+	vsync_check.pressed.connect(_on_vsync_toggled)
+	
+	
+	# Остальные сигналы
 	back_button.pressed.connect(_on_back_pressed)
 
+
 # ─────────────────────────────────────────────
-# Срабатывает при изменении ползунка громкости
-# value — текущее значение от 0 до 10
+# Срабатывает при изменении ползунка музыки
 # ─────────────────────────────────────────────
-func _on_volume_changed(value: float):
-	# Переводим значение из шкалы 0-10 в 0.0-1.0
+func _on_music_volume_changed(value: float):
 	var volume_normalized = value / 10.0
-	
-	# Обновляем громкость в глобальном менеджере
 	MusicManager.set_volume(volume_normalized)
 
 # ─────────────────────────────────────────────
-# Кнопка "Назад" — возвращает в главное меню
+# Срабатывает при изменении ползунка sfx
+# ─────────────────────────────────────────────
+func _on_sfx_volume_changed(value: float):
+	var volume_normalized = value / 10.0
+	# Здесь нужно будет вызывать функцию управления громкостью SFX
+	# Например: SfxManager.set_volume(volume_normalized)
+	print("SFX volume set to: ", volume_normalized)
+	
+# ─────────────────────────────────────────────
+# Обработка выбора режима окна
+# ─────────────────────────────────────────────
+func _on_window_mode_selected(index: int):
+	match index:
+		0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+# ─────────────────────────────────────────────
+# Обработка VSync
+# ─────────────────────────────────────────────
+func _on_vsync_toggled():
+	if vsync_check.button_pressed:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+
+# ─────────────────────────────────────────────
+# Кнопка "Назад"
 # ─────────────────────────────────────────────
 func _on_back_pressed():
-	# Переключаемся обратно на главное меню
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
