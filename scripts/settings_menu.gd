@@ -138,8 +138,8 @@ func _on_resolution_selected(index: int):
 
 # ─── Сброс настроек ───
 func _on_reset_pressed():
-	music_slider.value = 5
-	_on_music_volume_changed(5)
+	music_slider.value = 2
+	_on_music_volume_changed(2)
 	sfx_slider.value = 5
 	_on_sfx_volume_changed(5)
 	window_mode_option.selected = 0
