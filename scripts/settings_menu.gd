@@ -1,14 +1,22 @@
 extends Node2D
 
-# Ссылки на узлы 
+# Ссылки на узлы
 @onready var music_slider = $VBoxContainer/MusicSlider
 @onready var sfx_slider = $VBoxContainer/SfxSlider2
 @onready var window_mode_option = $VBoxContainer/WindowModeOption
-@onready var vsync_check = $VBoxContainer/VsyncOption   
+@onready var vsync_check = $VBoxContainer/VsyncOption
 @onready var fps_option = $VBoxContainer/FpsOption
 @onready var resolution_option = $VBoxContainer/ResolutionOption
 @onready var reset_button = $VBoxContainer/ResetOption
 @onready var back_button = $Button_Back
+
+# Список доступных разрешений (используем в нескольких местах)
+var common_resolutions = [
+	Vector2i(1280, 720),
+	Vector2i(1366, 768),
+	Vector2i(1600, 900),
+	Vector2i(1920, 1080),
+]
 
 func _ready():
 	# === Музыка ===
@@ -50,12 +58,6 @@ func _ready():
 	fps_option.item_selected.connect(_on_fps_selected)
 
 	# === Разрешение ===
-	var common_resolutions = [
-		Vector2i(1280, 720),
-		Vector2i(1366, 768),
-		Vector2i(1600, 900),
-		Vector2i(1920, 1080),
-	]
 	for size in common_resolutions:
 		resolution_option.add_item(str(size.x) + "x" + str(size.y))
 
@@ -105,22 +107,39 @@ func _on_fps_selected(index: int):
 	var fps_values = [30, 60, 120, 144, 0]
 	Engine.set_max_fps(fps_values[index])
 
-# ─── Режим окна ───
+# ─── Режим окна (ИЗМЕНЕНО) ───
 func _on_window_mode_selected(index: int):
 	match index:
 		0:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			# При переключении в оконный режим ставим разрешение 1920x1080
+			DisplayServer.window_set_size(Vector2i(1920, 1080))
+			update_resolution_option_selection(1920, 1080)
 		1:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	update_resolution_option_state()
 
+# ─── Обновление доступности опции разрешения ───
 func update_resolution_option_state():
 	var is_windowed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED
 	resolution_option.disabled = not is_windowed
-	if resolution_option.disabled:
-		resolution_option.modulate = Color(0.5, 0.5, 0.5, 1)
-	else:
-		resolution_option.modulate = Color.WHITE
+	resolution_option.modulate = Color.WHITE if is_windowed else Color(0.5, 0.5, 0.5, 1)
+
+# ─── Обновление выбранного пункта в списке разрешений ───
+func update_resolution_option_selection(width: int, height: int):
+	var target = Vector2i(width, height)
+	for i in range(resolution_option.item_count):
+		var text = resolution_option.get_item_text(i)
+		var parts = text.split("x")
+		if parts.size() == 2:
+			var w = int(parts[0])
+			var h = int(parts[1])
+			if w == width and h == height:
+				resolution_option.selected = i
+				return
+	# Если не найдено, добавляем как "Текущее"
+	resolution_option.add_item("Текущее: " + str(width) + "x" + str(height))
+	resolution_option.selected = resolution_option.item_count - 1
 
 # ─── Разрешение ───
 func _on_resolution_selected(index: int):
@@ -135,34 +154,27 @@ func _on_resolution_selected(index: int):
 			window_mode_option.selected = 0
 			update_resolution_option_state()
 		DisplayServer.window_set_size(Vector2i(width, height))
+		update_resolution_option_selection(width, height)
 
-# ─── Сброс настроек ───
+# ─── Сброс настроек (ИЗМЕНЕНО) ───
 func _on_reset_pressed():
 	music_slider.value = 2
 	_on_music_volume_changed(2)
 	sfx_slider.value = 5
 	_on_sfx_volume_changed(5)
+	
+	# Оконный режим + 1920x1080
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	window_mode_option.selected = 0
-	_on_window_mode_selected(0)
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	update_resolution_option_selection(1920, 1080)
+	update_resolution_option_state()
+	
 	vsync_check.button_pressed = true
 	_on_vsync_toggled()
 	fps_option.selected = 1
 	_on_fps_selected(1)
 	
-	var default_res = Vector2i(1280, 720)
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	DisplayServer.window_set_size(default_res)
-	update_resolution_option_state()
-	
-	var sizes = [
-		Vector2i(1280, 720),
-		Vector2i(1366, 768),
-		Vector2i(1600, 900),
-		Vector2i(1920, 1080),
-	]
-	var idx = sizes.find(default_res)
-	if idx != -1:
-		resolution_option.selected = idx
 	print("Настройки сброшены к значениям по умолчанию")
 
 # ─── Назад ───

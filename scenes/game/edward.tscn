@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d0cdelpkl0f0w"]
+
+[ext_resource type="Script" uid="uid://c544fwy0d1yrr" path="res://scripts/EdwardController.gd" id="1_3dcjd"]
+[ext_resource type="Texture2D" uid="uid://dby0wouvb7v1e" path="res://assets/sprites/ui/icon.svg" id="2_osvyu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_51c6i"]
+radius = 35.0
+height = 96.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3cil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_osvyu")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.7
+}]
+
+[node name="edward" type="CharacterBody2D" unique_id=1576687076]
+script = ExtResource("1_3dcjd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=875602365]
+position = Vector2(562, 314)
+shape = SubResource("CapsuleShape2D_51c6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=2049696565]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_x3cil")
+animation = &"walk"
+frame_progress = 0.060573205

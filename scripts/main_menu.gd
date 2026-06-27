@@ -3,32 +3,25 @@ extends CanvasLayer
 # ═══════════════════════════════════════════════
 # MainMenu — скрипт главного меню
 # Управляет кнопками и переходами между сценами
-# ═══════════════════════════════════════════════
 
-# Ссылки на кнопки (назначаются в инспекторе или через @onready)
-@onready var new_game_button = $VBoxContainer/Button_NewGame  # Первая кнопка
-@onready var load_button = $VBoxContainer/Button_LoadGame     # Вторая кнопка
-@onready var settings_button = $VBoxContainer/Button_Settings # Третья кнопка
-@onready var quit_button = $VBoxContainer/Button_QuitGame     # Четвёртая кнопка
+@onready var new_game_button = $TextureButton_NewGame/Button_NewGame  # Первая кнопка
+@onready var load_button =  $TextureButton_LoadGame/Button_LoadGame # Вторая кнопка
+@onready var settings_button = $TextureButton_Settings/Button_Settings# Третья кнопка
+@onready var quit_button = $TextureButton_QuitGame/Button_QuitGame     # Четвёртая кнопка
 
-# ─────────────────────────────────────────────
-# Вызывается при загрузке сцены
-# ─────────────────────────────────────────────
+
 func _ready():
-	# Подключаем сигналы кнопок к функциям
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	load_button.pressed.connect(_on_load_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 
-# ─────────────────────────────────────────────
-# Кнопка "Новая игра"
-# ─────────────────────────────────────────────
+
 func _on_new_game_pressed():
 	# Переключаемся на игровую сцену
 	# Пока просто выводим сообщение в консоль
 	print("Запуск новой игры...")
-	# get_tree().change_scene_to_file("res://scenes/game/game_level.tscn")
+	get_tree().change_scene_to_file("res://scenes/game/game_level.tscn")
 
 # ─────────────────────────────────────────────
 # Кнопка "Загрузить игру"

@@ -2,13 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://bfskj4lwd35sy" path="res://assets/fonts/Galmuri7 (Rus by rigbikkk).ttf" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://feyoljekpkgy" path="res://scripts/main_menu.gd" id="1_ob46e"]
+[ext_resource type="Texture2D" uid="uid://do6c1x33whne" path="res://assets/sprites/ui/main menu buttons/гаме.png" id="3_ob46e"]
+[ext_resource type="Texture2D" uid="uid://bstaspjiifbeb" path="res://assets/sprites/ui/main menu buttons/Лоад гаме.png" id="4_uqeha"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0ebjn"]
 load_path = "res://.godot/imported/menu_background.png-ec4c26fbc2402c82ab7c02672a9e9cb5.ctex"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vj6pe"]
 font = ExtResource("1_fsom3")
-font_size = 67
+font_size = 154
 font_color = Color(1, 0.15134397, 0.10833255, 1)
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
@@ -37,41 +39,90 @@ size_flags_vertical = 4
 texture = SubResource("CompressedTexture2D_0ebjn")
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=84636417]
+[node name="Label" type="Label" parent="." unique_id=637037975]
+offset_left = 87.0
+offset_top = 31.0
+offset_right = 1030.0
+offset_bottom = 205.0
+text = "BUBBLE PIVO"
+label_settings = SubResource("LabelSettings_vj6pe")
+horizontal_alignment = 1
+
+[node name="TextureButton_NewGame" type="TextureButton" parent="." unique_id=613692587]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -212.0
-offset_right = 193.0
-offset_bottom = 4.0
+offset_left = -558.0
+offset_top = -205.0
+offset_right = 4442.0
+offset_bottom = 4795.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.1244167, 2.2652607)
-alignment = 1
+scale = Vector2(0.105, 0.105)
+texture_normal = ExtResource("3_ob46e")
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=637037975]
-layout_mode = 2
-text = "BUBBLE PIVO"
-label_settings = SubResource("LabelSettings_vj6pe")
-horizontal_alignment = 1
-
-[node name="Button_NewGame" type="Button" parent="VBoxContainer" unique_id=104561081]
-layout_mode = 2
+[node name="Button_NewGame" type="Button" parent="TextureButton_NewGame" unique_id=104561081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56218.504
+offset_top = -16230.795
+offset_right = 56283.09
+offset_bottom = 16261.424
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.035, 0.035)
+offset_transform_visual_only = false
 text = "New Game"
 
-[node name="Button_LoadGame" type="Button" parent="VBoxContainer" unique_id=96751741]
-layout_mode = 2
-text = "Load Game"
+[node name="TextureButton_LoadGame" type="TextureButton" parent="." unique_id=1444413958]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 86.99994
+offset_top = -207.99997
+offset_right = 5087.0
+offset_bottom = 4792.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.105, 0.105)
+texture_normal = ExtResource("4_uqeha")
 
-[node name="Button_Settings" type="Button" parent="VBoxContainer" unique_id=1626316841]
-layout_mode = 2
+[node name="Button_LoadGame" type="Button" parent="TextureButton_LoadGame" unique_id=96751741]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 2160.0
+offset_right = 4519.998
+offset_bottom = 2960.0
+
+[node name="TextureButton_Settings" type="TextureButton" parent="." unique_id=1521275364]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button_Settings" type="Button" parent="TextureButton_Settings" unique_id=1626316841]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 457.28406
+offset_right = 1171.0
+offset_bottom = 488.28406
 text = "Settings"
 
-[node name="Button_QuitGame" type="Button" parent="VBoxContainer" unique_id=892338267]
-layout_mode = 2
+[node name="TextureButton_QuitGame" type="TextureButton" parent="." unique_id=1114966272]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button_QuitGame" type="Button" parent="TextureButton_QuitGame" unique_id=892338267]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 591.0
+offset_right = 989.0
+offset_bottom = 622.0
 text = "Quit Game"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=796910409]

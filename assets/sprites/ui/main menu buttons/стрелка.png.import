@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbxedjf7yy35"
-path="res://.godot/imported/orange button.png-960c3a10f740051627d5474434d4abb8.ctex"
+uid="uid://c23p3bfl1w1hi"
+path="res://.godot/imported/стрелка.png-c187d9406c75d4eb80a9d753226b2352.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/orange button.png"
-dest_files=["res://.godot/imported/orange button.png-960c3a10f740051627d5474434d4abb8.ctex"]
+source_file="res://assets/sprites/ui/main menu buttons/стрелка.png"
+dest_files=["res://.godot/imported/стрелка.png-c187d9406c75d4eb80a9d753226b2352.ctex"]
 
 [params]
 
